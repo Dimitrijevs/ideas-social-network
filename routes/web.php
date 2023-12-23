@@ -27,7 +27,4 @@ Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->name('ideas.upda
 
 Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
 
-
-
-
 Route::get('/terms', [DashboardController::class, 'terms']);
