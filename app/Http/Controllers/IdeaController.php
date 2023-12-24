@@ -9,14 +9,13 @@ class IdeaController extends Controller
 {
     public function store() {
 
-        request()->validate([
+        $validated = request()->validate([
             'content' => 'required|min:3|max:240',
         ]);
 
-        $idea = new Idea([
-            'content' => request()->get('content', ''),
-        ]);
-        $idea->save();
+        $validated['user_id'] = auth()->id();
+
+        Idea::create($validated);
 
         return redirect()->route('dashboard')->with('success', 'Idea was created successfully!');
     }

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,28 @@ Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->name('ideas.upda
 
 Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
 
+Route::post('/ideas{idea}/comments', [CommentController::class, 'store'])->name('ideas.comments.store');
+
+
+//authentication routes
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+
+Route::post('/register', [AuthController::class, 'store']);
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+Route::post('/login', [AuthController::class, 'authenticate']);
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 Route::get('/terms', [DashboardController::class, 'terms']);
+
+
+// 1. model - name in a singular form
+// 2. controller
+// 3. migration
+// 4. setup the routes
+// php artisan make:model Name -m -c
+// -m - migration
+// -c - controller

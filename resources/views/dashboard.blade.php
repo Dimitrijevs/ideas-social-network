@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="row">
+    <div class="row" style="width: 1000px">
         <div class="col-4">
             @include('shared.left-sidebar')
         </div>
