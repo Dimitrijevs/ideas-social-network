@@ -18,7 +18,7 @@
     @include('layout.nav')
     <div class="container py-4 d-flex">
 
-        {{--  --}}
+
         @yield('content')
 
     </div>

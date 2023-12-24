@@ -25,12 +25,22 @@ class IdeaController extends Controller
     }
 
     public function edit(Idea $idea) {
+
+        if(auth()->id() !== $idea->user->id){
+            abort(404, "message test");
+        }
+
         $editing = true;
 
         return view('ideas.show', compact('idea', 'editing'));
     }
 
     public function update(Idea $idea) {
+
+        if(auth()->id() !== $idea->user->id){
+            abort(404, "message test");
+        }
+
         request()->validate([
             'content' => 'required|min:3|max:240',
         ]);
@@ -42,6 +52,10 @@ class IdeaController extends Controller
     }
 
     public function destroy(Idea $idea) {
+
+        if(auth()->id() !== $idea->user->id){
+            abort(404, "message test");
+        }
 
         $idea->delete();
 
