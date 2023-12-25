@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,10 @@ Route::resource('ideas', IdeaController::class)->only(['show']);
 
 Route::resource('ideas.comments', CommentController::class)->only(['store'])->middleware('auth');
 
+Route::resource('users', UserController::class)->only('show', 'edit', 'update')->middleware('auth');
+
+Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
+
 
 Route::get('/terms', [DashboardController::class, 'terms']);
 
@@ -52,3 +57,4 @@ Route::get('/terms', [DashboardController::class, 'terms']);
 // php artisan make:model Name -m -c
 // -m - migration
 // -c - controller
+// -r - resurce (creteas 7 standart functions in controller)

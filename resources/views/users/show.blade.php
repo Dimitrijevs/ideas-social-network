@@ -7,23 +7,21 @@
         </div>
         <div class="col-8 pe-4 ps-0">
             @include('shared.success-message')
-            @include('shared.submit-idea')
+            <div class="mt-3">
+                @include('shared.user-card')
+            </div>
             <hr>
-            @forelse ($ideas as $idea)
+            @forelse ($user->ideas as $idea)
                 <div class="mt-3">
                     @include('shared.idea-card')
                 </div>
             @empty
                 <h1 class="text-center">No results found</h1>
             @endforelse
-            <div class="mt-2">
-                {{ $ideas->withQueryString()->links() }}
-            </div>
         </div>
     </div>
     <div class="col-3">
         @include('shared.search-bar')
         @include('shared.follow-box')
-    </div>
     </div>
 @endsection
