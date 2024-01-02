@@ -8,7 +8,7 @@
         <div class="col-8 pe-4 ps-0">
             @include('shared.success-message')
             <div class="mt-3">
-                @include('shared.idea-card')
+                @include('ideas.shared.idea-card')
             </div>
         </div>
     </div>

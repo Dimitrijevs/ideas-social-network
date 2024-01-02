@@ -7,13 +7,13 @@
         </div>
         <div class="col-8 pe-4 ps-0">
             @include('shared.success-message')
-            <div class="mt-3">
-                @include('shared.user-card')
+            <div>
+                @include('users.shared.user-card')
             </div>
             <hr>
             @forelse ($user->ideas as $idea)
                 <div class="mt-3">
-                    @include('shared.idea-card')
+                    @include('ideas.shared.idea-card')
                 </div>
             @empty
                 <h1 class="text-center">No results found</h1>
