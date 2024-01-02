@@ -17,6 +17,11 @@ class Idea extends Model
         'updated_at',
     ];
 
+    protected $with = [
+        'user:id,name,image',
+        'comments.user:id,name,image'
+    ];
+
     // changeable 
     protected $fillable = [
         'user_id',

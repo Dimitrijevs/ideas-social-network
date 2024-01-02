@@ -52,7 +52,9 @@ Route::post('users/{user}/unfollow', [FollowerController::class, 'unfollow'])->m
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
 
 
-Route::get('/terms', [DashboardController::class, 'terms']);
+Route::get('/terms', function() {
+    return view('terms');
+})->name('terms');
 
 
 // 1. model - name in a singular form
