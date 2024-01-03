@@ -11,13 +11,16 @@
                 @include('users.shared.user-card')
             </div>
             <hr>
-            @forelse ($user->ideas as $idea)
+            @forelse ($ideas as $idea)
                 <div class="mt-3">
                     @include('ideas.shared.idea-card')
                 </div>
             @empty
                 <h1 class="text-center">No results found</h1>
             @endforelse
+            <div class="mt-2">
+                {{ $ideas->withQueryString()->links() }}
+            </div>
         </div>
     </div>
     <div class="col-3">

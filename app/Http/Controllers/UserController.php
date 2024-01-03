@@ -23,9 +23,13 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+        
         $editing = true;
 
-        return view('users.edit', compact('user', 'editing'));
+        $ideas = $user->ideas()->paginate(4);
+
+        return view('users.edit', compact('user', 'editing', 'ideas'));
     }
 
     /**
@@ -33,6 +37,8 @@ class UserController extends Controller
      */
     public function update(User $user)
     {
+        $this->authorize('update', $user);
+
         $validated = request()->validate([
             'name' => 'required|min:3|max:240',
             'bio' => 'nullable|min:2|max:255',

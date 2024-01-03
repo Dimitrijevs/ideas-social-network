@@ -25,7 +25,7 @@
         </div>
         <div class="col-3">
             @include('shared.search-bar')
-            @include('shared.follow-box')
+            @include('users.shared.follow-box')
         </div>
     </div>
 @endsection
