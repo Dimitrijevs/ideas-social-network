@@ -2,10 +2,11 @@
     <div class="px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                    src="{{ $idea->user->getImageURL() }}" alt="Mario Avatar">
+                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ $idea->user->getImageURL() }}"
+                    alt="Mario Avatar">
                 <div>
-                    <h5 class="card-title mb-0"><a href="{{ route('users.show', $idea->user->id) }}">{{ $idea->user->name }}</a></h5>
+                    <h5 class="card-title mb-0"><a
+                            href="{{ route('users.show', $idea->user->id) }}">{{ $idea->user->name }}</a></h5>
                 </div>
             </div>
             <div class="d-flex">
@@ -13,15 +14,15 @@
                     @csrf
                     @method('delete')
                     @auth
-                        @if(auth()->id() === $idea->user->id)
+                        @can('update', $idea)
                             <a class="me-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
-                        @endif
+                        @endcan
                     @endauth
                     <a class="me-2" href="{{ route('ideas.show', $idea->id) }}">View</a>
                     @auth
-                        @if(auth()->id() === $idea->user->id)
+                        @can('delete', $idea)
                             <button class=" btn btn-danger btn-sm py-1 px-2"> X </button>
-                        @endif
+                        @endcan
                     @endauth
                 </form>
             </div>
